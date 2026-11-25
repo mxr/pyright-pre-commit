@@ -11,8 +11,8 @@ from typing import cast
 if TYPE_CHECKING:
     from pathlib import Path
 
-# Node.js version is an implementation detail, bumped independently of
-# pyright. Pin an LTS release known to work.
+# Node.js version is an implementation detail, bumped independently of pyright
+# renovate: datasource=node-version depName=node
 NODE_VERSION = "24.20.0"
 
 
