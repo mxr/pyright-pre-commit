@@ -25,6 +25,7 @@ pyright = "pyright_pre_commit.__main__:main"
 dev = [
   "covdefaults>=2.1.0",
   "coverage",
+  "pre-commit",
   "pytest",
 ]
 
