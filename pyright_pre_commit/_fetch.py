@@ -12,7 +12,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 # renovate: datasource=node-version depName=node
-NODE_VERSION = "24.20.0"
+NODE_VERSION = "26.13.1"
 
 
 def _node_platform_arch() -> tuple[str, str]:
