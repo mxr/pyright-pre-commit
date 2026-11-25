@@ -18,7 +18,21 @@ def test_try_repo(tmp_path, subtests):
 
     # one try-repo run for all cases: each run builds a fresh shadow commit, so the hook env is never reused across runs
     env = {**os.environ, "PRE_COMMIT_HOME": str(tmp_path / "pre-commit-home")}
-    proc = subprocess.run((sys.executable, "-m", "pre_commit", "try-repo", str(REPO_ROOT), "pyright", "--all-files"), cwd=target, env=env, capture_output=True, text=True)
+    proc = subprocess.run(
+        (
+            sys.executable,
+            "-m",
+            "pre_commit",
+            "try-repo",
+            str(REPO_ROOT),
+            "pyright",
+            "--all-files",
+        ),
+        cwd=target,
+        env=env,
+        capture_output=True,
+        text=True,
+    )
     output = proc.stdout + proc.stderr
 
     with subtests.test("exit code"):
