@@ -14,7 +14,7 @@ def test_try_repo(tmp_path, subtests):
     (target / "good.py").write_text("x: int = 1\n")
     (target / "bad.py").write_text('x: int = "a"\n')
     subprocess.check_call(("git", "init", "-q", str(target)))
-    subprocess.check_call(("git", "-C", str(target), "add", "."))
+    subprocess.check_call(("git", "-C", str(target), "add", "good.py", "bad.py"))
 
     # one try-repo run for all cases: each run builds a fresh shadow commit, so the hook env is never reused across runs
     env = {**os.environ, "PRE_COMMIT_HOME": str(tmp_path / "pre-commit-home")}
@@ -28,6 +28,7 @@ def test_try_repo(tmp_path, subtests):
             "pyright",
             "--all-files",
         ),
+        check=False,
         cwd=target,
         env=env,
         capture_output=True,
