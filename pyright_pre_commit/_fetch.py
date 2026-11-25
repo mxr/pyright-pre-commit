@@ -61,7 +61,7 @@ def _fetch_pyright(version: str, dest: Path) -> None:
             if not relative or relative.endswith(".map"):
                 continue
             member.name = relative
-            tar.extract(member, dest)
+            tar.extract(member, dest, filter="data")
 
 
 def _fetch_node(version: str, node_platform: str, arch: str, dest: Path) -> None:
@@ -81,7 +81,7 @@ def _fetch_node(version: str, node_platform: str, arch: str, dest: Path) -> None
         with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tar:
             member = tar.getmember(f"{archive_stem}/bin/node")
             member.name = "bin/node"
-            tar.extract(member, dest)
+            tar.extract(member, dest, filter="data")
         (dest / "bin" / "node").chmod(0o755)
 
 
