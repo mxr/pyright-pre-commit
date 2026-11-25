@@ -16,8 +16,8 @@ widens your security exposure, since invocations can pull in a different, unveri
 Further, `pyright` is a node package, and other wrappers maintain `language: node` so you can't specify any of your
 python additional dependencies.
 
-This wrapper works around both those issues. A daily cron releases new versions in lockstep with `pyright`
-releases. `node` is updated separately by renovate to an LTS.
+This wrapper works around both those issues. A daily cron releases new versions in lockstep with `pyright` releases.
+`node` is updated separately by renovate to an LTS.
 
 ### Using pyright with pre-commit
 
